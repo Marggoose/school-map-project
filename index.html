@@ -246,13 +246,16 @@
 
 		$(document).ready(function () {
 			$('svg .part').on('mouseover', function (e) {
-				const room = $(this).data('room');
-				const tooltip = $('#tooltip');
-				const offset = $('.map').offset();
-				tooltip.html(`<img src="media/${room.replace(' ', '_')}.jpg" alt="${room}"><strong>${room}</strong><p>Описание кабинета...</p>`)
-					.css({ top: e.pageY - offset.top + 10, left: e.pageX - offset.left + 10 })
-					.show();
-			});
+    const room = $(this).data('room');
+    const description = $(this).data('desc'); // Получаем описание из data-desc
+    const tooltip = $('#tooltip');
+    const offset = $('.map').offset();
+    
+    tooltip.html(`<img src="media/${room.replace(' ', '_')}.jpg" alt="${room}"><strong>${room}</strong><p>${description}</p>`)
+        .css({ top: e.pageY - offset.top + 10, left: e.pageX - offset.left + 10 })
+        .show();
+});
+
 
 			$('svg .part').on('mouseout', function () {
 				$('#tooltip').hide();
