@@ -240,19 +240,31 @@
 	</style>
 </head>
 <body>
-	<header>
-		<h1>Интерактивная карта школы</h1>
-		<div id="auth">
-			<nav>
-  			<a href="index.html">Главная</a>
- 	 		<a href="about.html">О нас</a>
-			</nav>
+<header style="background: linear-gradient(to right, #4a90e2, #0072ff); padding: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+	<div style="flex: 1;">
+		<h1 style="color: white; font-size: 24px; margin: 0;">Интерактивная карта школы</h1>
+	</div>
+	
+	<nav style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+		<a href="index.html" style="text-decoration: none; padding: 10px 20px; background: white; color: #0072ff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; transition: background 0.3s;">
+			Главная
+		</a>
+		<a href="about.html" style="text-decoration: none; padding: 10px 20px; background: white; color: #0072ff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; transition: background 0.3s;">
+			О нас
+		</a>
+	</nav>
 
-			<button onclick="showLoginModal()">Войти</button>
-			<span id="welcome" style="display:none;">Добро пожаловать, <strong id="userDisplay"></strong>!</span>
-			<button id="logoutBtn" onclick="logout()">Выйти</button>
-		</div>
-	</header>
+	<div id="auth" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+		<button onclick="showLoginModal()" style="padding: 10px 20px; background: white; color: #0072ff; border: none; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; cursor: pointer;">
+			Войти
+		</button>
+		<span id="welcome" style="display: none; color: white;">Добро пожаловать, <strong id="userDisplay"></strong>!</span>
+		<button id="logoutBtn" onclick="logout()" style="padding: 10px 20px; background: white; color: #0072ff; border: none; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; cursor: pointer;">
+			Выйти
+		</button>
+	</div>
+</header>
+
 
 	<div class="welcome-banner fade-in">
 	<h2>Добро пожаловать на интерактивную карту школы!</h2>
