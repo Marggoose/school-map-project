@@ -189,6 +189,76 @@
 		#auth {
    	 		position: relative;  
 		}
+				.welcome-banner {
+			background: #d0e9ff;
+			border-top: 2px solid #3399ff;
+			border-bottom: 2px solid #3399ff;
+			padding: 20px;
+			text-align: center;
+			font-family: sans-serif;
+			color: #003366;
+			margin: 0;
+		}
+	
+		.welcome-banner h2 {
+			margin-top: 0;
+			font-size: 24px;
+			color: #004080;
+		}
+	
+		.welcome-banner p {
+			margin-bottom: 0;
+			font-size: 16px;
+		}
+		.welcome-banner {
+	background: #d0e9ff;
+	border-top: 2px solid #3399ff;
+	border-bottom: 2px solid #3399ff;
+	padding: 30px 20px;
+	text-align: center;
+	font-family: sans-serif;
+	color: #003366;
+	position: relative;
+	animation: fadeIn 1.5s ease;
+}
+
+.welcome-banner h2 {
+	margin-top: 0;
+	font-size: 26px;
+	color: #004080;
+}
+
+.welcome-banner p {
+	margin-bottom: 0;
+	font-size: 16px;
+}
+
+.banner-img {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	width: 60px;
+	height: auto;
+	opacity: 0.9;
+	border-radius: 8px;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(-20px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+	animation: fadeIn 1.2s ease-out;
+}
+
+/* Анимация для карты */
+.map-container {
+	animation: fadeIn 1.4s ease-out;
+}
+
 	</style>
 </head>
 <body>
@@ -201,6 +271,12 @@
 		</div>
 	</header>
 
+	<div class="welcome-banner fade-in">
+	<h2>Добро пожаловать на интерактивную карту школы!</h2>
+	<p>Этот проект создан в рамках практики. Здесь вы можете посмотреть расположение кабинетов, узнать информацию о преподавателях и оставить свои заметки.</p>
+	<img src="media/Тссс.jpg" alt="Тссс" class="banner-img">
+</div>
+	
 	<div class="map-container">
 		<div class="map">
 			<svg viewBox="0 0 1140 800">
