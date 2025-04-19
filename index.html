@@ -184,32 +184,38 @@
 			text-align: center;
 		}
 
-		#logoutBtn {
-			background: #ff3333;
-			color: white;
-			border: none;
-			padding: 5px 10px;
-			border-radius: 5px;
-			cursor: pointer;
-			margin-left: 10px;
-			display: none;
-		}
-
 		#auth button {
-			background: #0066cc;
-			color: white;
-			padding: 8px 16px;
-			border: none;
-			border-radius: 12px;
-			font-size: 14px;
-			cursor: pointer;
-			margin-left: 10px;
-		}
+            background: #0066cc;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
+        #auth {
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+        }
 
-		#auth {
-			position: relative;
-		}
+        #welcome {
+            display: none;
+        }
+
+        #logoutBtn {
+            background: #ff3333;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            display: none;
+        }
 
 		.welcome-banner {
 			background: #d0e9ff;
@@ -255,20 +261,16 @@
 </head>
 <body>
 <header>
-	<div style="display: flex; justify-content: space-between; align-items: center;">
-		<div>
-			<h1 style="color: white; font-size: 24px; margin: 0;">Интерактивная карта школы</h1>
-			<nav>
-				<a href="#">Главная</a>
-				<a href="#">О нас</a>
-			</nav>
-		</div>
-		<div id="auth">
-			<button onclick="showLoginModal()">Войти</button>
-			<span id="welcome" style="display: none;">Добро пожаловать, <strong id="userDisplay"></strong>!</span>
-			<button id="logoutBtn" onclick="logout()">Выйти</button>
-		</div>
-	</div>
+    <h1>Интерактивная карта школы</h1>
+    <nav>
+        <a>Главная</a>
+        <a>О нас</a>
+    </nav>
+    <div id="auth">
+        <button onclick="showLoginModal()">Войти</button>
+        <span id="welcome" style="display: none;">Добро пожаловать, <strong id="userDisplay"></strong>!</span>
+        <button onclick="logout()" id="logoutBtn" style="display: none;">Выйти</button>
+    </div>
 </header>
 
 	<div class="welcome-banner fade-in">
