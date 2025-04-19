@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>О нас — Интерактивная карта школы</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f0f8ff;
+      color: #003366;
+    }
+
+    header, footer {
+      background: #0066cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 10%;
+      border-bottom: 1px solid #ccc;
+      background: #ffffff;
+    }
+
+    .section:nth-child(even) {
+      background: #e9f4ff;
+    }
+
+    .section img {
+      width: 40%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .section .text {
+      width: 55%;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #004080;
+    }
+
+    footer {
+      text-align: center;
+      background: #0066cc;
+      color: white;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section .text, .section img {
+        width: 100%;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Интерактивная карта школы</h1>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="about.html">О нас</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <div class="text">
+      <h2>О проекте</h2>
+      <p>Этот сайт создан в рамках учебной практики и представляет собой интерактивную карту школы. Пользователи могут просматривать план здания, получать информацию о кабинетах и преподавателях, а также оставлять заметки.</p>
+    </div>
+    <img src="media/about_project.jpg" alt="О проекте">
+  </section>
+
+  <section class="section">
+    <div class="text">
+      <h2>Наша школа</h2>
+      <p>МБОУ ООШ №26 — это уютная школа с дружелюбной атмосферой, где каждый ученик может раскрыть свои способности. Мы стремимся сделать обучение интересным и современным.</p>
+    </div>
+    <img src="media/school_building.jpg" alt="Школа">
+  </section>
+
+  <section class="section">
+    <div class="text">
+      <h2>Наша команда</h2>
+      <p>Над проектом работали студенты и преподаватели, заинтересованные в развитии цифровых навыков. Мы верим, что технологии могут улучшить образовательный процесс.</p>
+    </div>
+    <img src="media/team_photo.jpg" alt="Команда">
+  </section>
+
+  <footer>
+    <p>&copy; 2025 МБОУ ООШ №26. Все права защищены.</p>
+  </footer>
+</body>
+</html>
