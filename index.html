@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
@@ -10,28 +11,268 @@
 	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<style>
-		/* Стили оставлены без изменений */
+		
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			background: #e0f0ff;
+			color: #003366;
+		}
+
+		header, footer {
+			background: #0066cc;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+
+		.map-container {
+			margin: 20px auto;
+			border: 3px solid #3399ff;
+			border-radius: 15px;
+			padding: 10px;
+			background: #ffffff;
+			width: fit-content;
+			opacity: 0;
+			animation: fadeIn 1.4s ease-out 4s forwards;
+		}
+
+		.map {
+			position: relative;
+			text-align: center;
+		}
+
+		svg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		.part {
+			opacity: .3;
+		}
+
+		.part:hover {
+			transition: opacity .2s ease;
+			opacity: .5;
+			cursor: pointer;
+		}
+
+		.tooltip {
+			display: none;
+			position: absolute;
+			background: #ffffff;
+			border: 1px solid #3399ff;
+			padding: 10px;
+			border-radius: 8px;
+			z-index: 20;
+			width: 200px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+		}
+
+		.tooltip img {
+			width: 100%;
+			height: auto;
+			margin-bottom: 5px;
+		}
+
+		.description {
+			display: none;
+			position: absolute;
+			padding: 20px;
+			box-sizing: border-box;
+			width: 300px;
+			height: 400px;
+			box-shadow: 0 0 32px 10px #ccc;
+			left: 50px;
+			bottom: calc(50% - 200px);
+			font-family: sans-serif;
+		}
+
+		.description img {
+			width: 250px;
+			margin-bottom: 20px;
+		}
+
+		.note-form {
+			position: absolute;
+			background: #ffffff;
+			border: 1px solid #0066cc;
+			padding: 10px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+			max-width: 200px;
+			z-index: 10;
+		}
+
+		.note-form textarea {
+			width: 100%;
+			height: 60px;
+			margin-bottom: 5px;
+		}
+
+		.note-form button {
+			background: #0066cc;
+			color: white;
+			border: none;
+			padding: 5px 10px;
+			cursor: pointer;
+			border-radius: 5px;
+			margin-right: 5px;
+		}
+
+		.note-display {
+			position: absolute;
+			background: #d6ecff;
+			border: 1px solid #3399ff;
+			padding: 5px 10px;
+			border-radius: 8px;
+			font-size: 14px;
+			z-index: 5;
+			max-width: 150px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.2);
+		}
+
+		.note-display button {
+			background: transparent;
+			color: red;
+			border: none;
+			cursor: pointer;
+			font-size: 14px;
+			float: right;
+		}
+
+		#welcome {
+			display: inline;
+		}
+
+		#loginModal {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 999;
+		}
+
+		#loginModal .modal-content {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			text-align: center;
+		}
+
+		#logoutBtn {
+			background: #ff3333;
+			color: white;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-left: 10px;
+			display: none;
+		}
+
+		#auth button {
+			background: #0066cc;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 12px;
+			font-size: 16px;
+			cursor: pointer;
+			position: absolute;
+			left: 10px;
+			bottom: 10px;
+		}
+
+		#auth {
+			position: relative;
+		}
+
+		.welcome-banner {
+			background: #d0e9ff;
+			border-top: 2px solid #3399ff;
+			border-bottom: 2px solid #3399ff;
+			padding: 30px 20px;
+			text-align: center;
+			font-family: sans-serif;
+			color: #003366;
+			position: relative;
+			opacity: 0;
+			animation: fadeIn 1.5s ease-out 0.2s forwards;
+		}
+
+		.welcome-banner h2 {
+			margin-top: 0;
+			font-size: 26px;
+			color: #004080;
+		}
+
+		.welcome-banner p {
+			margin-bottom: 0;
+			font-size: 16px;
+		}
+
+		.banner-img {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		width: 10px;
+		height: auto;
+		border-radius: 8px;
+		box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+		filter: none;
+		opacity: 1;
+		mix-blend-mode: normal;
+		}
+
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(-20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
 	</style>
 </head>
 <body>
 	<header>
 		<h1>Интерактивная карта школы</h1>
 		<div id="auth">
-			<button onclick="showLoginModal()" id="loginBtn">Войти</button>
+			<button onclick="showLoginModal()">Войти</button>
 			<span id="welcome" style="display:none;">Добро пожаловать, <strong id="userDisplay"></strong>!</span>
 			<button id="logoutBtn" onclick="logout()">Выйти</button>
 		</div>
 	</header>
 
 	<div class="welcome-banner fade-in">
-		<h2>Добро пожаловать на интерактивную карту школы!</h2>
-		<p>Этот проект создан в рамках практики. Здесь вы можете посмотреть расположение кабинетов, узнать информацию о преподавателях и оставить свои заметки.</p>
-		<img src="media/Polish Cow Cow GIF - Polish Cow Cow Dancing - Discover & Share GIFs.gif" alt="Тссс" class="banner-img">
-	</div>
-
+	<h2>Добро пожаловать на интерактивную карту школы!</h2>
+	<p>Этот проект создан в рамках практики. Здесь вы можете посмотреть расположение кабинетов, узнать информацию о преподавателях и оставить свои заметки.</p>
+	<img src="media/Polish Cow Cow GIF - Polish Cow Cow Dancing - Discover & Share GIFs.gif" alt="Тссс" class="banner-img">
+</div>
+	
 	<div class="map-container">
 		<div class="map">
-			<!-- SVG оставлен без изменений -->
+			<svg viewBox="0 0 1140 800">
+				<a href="#"><path class="part" d="M 238.3727,302.42657 V 465.90039 H 62.638335 l -2.04342,-163.47382 z" fill="#3399ff" data-room="Класс1" data-desc="Тарабукина Мирослава Викторовна"></path></a>
+				<a href="#"><path class="part" d="m 60.594915,67.432951 171.647505,2.043423 2.04343,138.952746 -173.690935,4.08685 z" fill="#3399ff" data-room="Класс2" data-desc="Калиниченко Светлана Александровна"></path></a>
+				<a href="#"><path class="part" d="m 389.58597,69.476374 6.13028,138.952746 173.69093,2.04343 V 67.432951 Z" fill="#3399ff" data-room="Класс3" data-desc="Устименко Галина Викторовна"></path></a>
+				<a href="#"><path class="part" d="m 379.36887,465.90039 187.99488,-2.04342 v -161.4304 l -190.03831,-2.04343 z" fill="#3399ff" data-room="Класс4" data-desc="Белокреницкая Ольга Васильевна"></path></a>
+				<a href="#"><path class="part" d="M 565.32033,302.42657 561.2335,465.90039 H 835.05213 L 830.96528,300.38314 Z" fill="#3399ff" data-room="Класс5" data-desc="Радченко Наталья Евгеньевна"></path></a>
+				<a href="#"><path class="part" d="m 833.00871,300.38314 -2.04343,165.51725 H 1049.6115 V 300.38314 Z" fill="#3399ff" data-room="Класс6" data-desc="Солошенко Евгений Иванович"></path></a>
+				<a href="#"><path class="part" d="m 1007.7214,520.0511 -1.0217,207.4074 107.2797,2.04343 V 522.09452 Z" fill="#3399ff" data-room="Класс7" data-desc="Козюрман Галина Александровна"></path></a>
+				<a href="#"><path class="part" d="m 1112.9576,479.18264 v 192.08173 l 96.0409,-2.04343 -2.0434,-190.0383 z" fill="#3399ff" data-room="Класс8" data-desc="Осколкова Елена Александровна"></path></a>
+				<a href="#"><path class="part" d="m 1206.6997,69.731801 -124.9043,-1.02171 -0.5108,234.738189 h 124.6488 z" fill="#3399ff" data-room="Класс9" data-desc="Вышегородцева Ольга Николаевна"></path></a>
+				<a href="#"><path class="part" d="m 568.38546,68.454664 -1.53255,143.550446 151.72414,0.51086 -1.02171,-145.593876 z" data-room="Библиотека"></path></a>
+				<a href="#"><path class="part" d="m 1206.4442,359.64241 -111.8774,0.51085 0.5109,120.05109 h 111.3665 z" data-room="Учительская"></path></a>
+				<a href="#"><path class="part" d="m 1207.4659,303.44828 -112.3882,-1.53255 0.5109,58.23753 h 111.3665 z" data-room="Директорская"></path></a>
+			</svg>
 			<div class="tooltip" id="tooltip"></div>
 			<div class="description"></div>
 			<img src="media/building-plan.jpg" alt="План здания" style="width:100%;">
@@ -66,7 +307,6 @@
 			document.getElementById('welcome').style.display = 'inline';
 			document.getElementById('userDisplay').textContent = currentUser;
 			document.getElementById('logoutBtn').style.display = 'inline';
-			document.getElementById('loginBtn').style.display = 'none';
 			document.getElementById('loginModal').style.display = 'none';
 		}
 
@@ -74,21 +314,21 @@
 			currentUser = null;
 			document.getElementById('welcome').style.display = 'none';
 			document.getElementById('logoutBtn').style.display = 'none';
-			document.getElementById('loginBtn').style.display = 'inline';
 			document.getElementById('username').value = '';
 		}
 
 		$(document).ready(function () {
 			$('svg .part').on('mouseover', function (e) {
-				const room = $(this).data('room');
-				const description = $(this).data('desc');
-				const tooltip = $('#tooltip');
-				const offset = $('.map').offset();
+    const room = $(this).data('room');
+    const description = $(this).data('desc'); // Получаем описание из data-desc
+    const tooltip = $('#tooltip');
+    const offset = $('.map').offset();
+    
+    tooltip.html(`<img src="media/${room.replace(' ', '_')}.jpg" alt="${room}"><strong>${room}</strong><p>${description}</p>`)
+        .css({ top: e.pageY - offset.top + 10, left: e.pageX - offset.left + 10 })
+        .show();
+});
 
-				tooltip.html(`<img src="media/${room.replace(' ', '_')}.jpg" alt="${room}"><strong>${room}</strong><p>${description}</p>`)
-					.css({ top: e.pageY - offset.top + 10, left: e.pageX - offset.left + 10 })
-					.show();
-			});
 
 			$('svg .part').on('mouseout', function () {
 				$('#tooltip').hide();
@@ -135,11 +375,6 @@
 				form.append(addButton);
 				form.append(cancelButton);
 				$('.map').append(form);
-			});
-
-			// Блокировка перехода по ссылке в svg
-			$('svg a').on('click', function (e) {
-				e.preventDefault();
 			});
 		});
 	</script>
