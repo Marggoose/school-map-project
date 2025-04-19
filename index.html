@@ -375,6 +375,11 @@
 				form.append(addButton);
 				form.append(cancelButton);
 				$('.map').append(form);
+
+				$(document).ready(function () {
+				$('svg a').on('click', function (e) {
+				e.preventDefault();
+	});
 			});
 		});
 	</script>
