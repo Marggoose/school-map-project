@@ -20,6 +20,21 @@
 			color: #003366;
 		}
 
+		nav {
+     			 margin-top: 10px;
+    		}
+
+    		nav a {
+      			color: white;
+      			margin: 0 15px;
+      			text-decoration: none;
+      			font-weight: bold;
+  	  	}
+		nav a:hover {
+     			 text-decoration: underline;
+   		 }
+
+
 		header, footer {
 			background: #0066cc;
 			color: white;
@@ -240,28 +255,18 @@
 	</style>
 </head>
 <body>
-<header sstyle="background: linear-gradient(to right, #4a90e2, #0072ff); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+<header>
 	<h1 style="color: white; font-size: 24px; margin: 0;">Интерактивная карта школы</h1>
 
-	<!-- Навигация -->
-	<nav style="display: flex; gap: 10px; flex-wrap: wrap;">
-		<a href="index.html" style="text-decoration: none; padding: 10px 20px; background: white; color: #0072ff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; transition: background 0.3s;">
-			Главная
-		</a>
-		<a href="about.html" style="text-decoration: none; padding: 10px 20px; background: white; color: #0072ff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; transition: background 0.3s;">
-			О нас
-		</a>
+	<nav>
+		<a> Главная </a>
+		<a>О нас </a>
 	</nav>
 
-	<!-- Авторизация -->
-	<div id="auth" style="display: flex; align-items: center; gap: 10px;">
-		<button onclick="showLoginModal()" style="padding: 10px 20px; background: white; color: #0072ff; border: none; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; cursor: pointer;">
-			Войти
-		</button>
-		<span id="welcome" style="display: none; color: white;">Добро пожаловать, <strong id="userDisplay"></strong>!</span>
-		<button id="logoutBtn" onclick="logout()" style="padding: 10px 20px; background: white; color: #0072ff; border: none; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); font-weight: bold; cursor: pointer;">
-			Выйти
-		</button>
+	<div>
+		<button> Войти </button>
+		<span> Добро пожаловать, <strong id="userDisplay"></strong>!</span>
+		<button> Выйти </button>
 	</div>
 </header>
 
