@@ -11,6 +11,7 @@
 	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<style>
+		
 		body {
 			margin: 0;
 			padding: 0;
@@ -33,6 +34,8 @@
 			padding: 10px;
 			background: #ffffff;
 			width: fit-content;
+			opacity: 0;
+			animation: fadeIn 1.4s ease-out 2s forwards;
 		}
 
 		.map {
@@ -142,6 +145,10 @@
 			float: right;
 		}
 
+		#welcome {
+			display: inline;
+		}
+
 		#loginModal {
 			display: none;
 			position: fixed;
@@ -174,90 +181,61 @@
 		}
 
 		#auth button {
-    			background: #0066cc; 
-   	 		color: white; 
-    			padding: 12px 20px; 
-    			border: none;
-    			border-radius: 12px; 
-    			font-size: 16px; 
-    			cursor: pointer;
-    			position: absolute;  
-    			left: 10px; 
-    			bottom: 10px;  
-			}
+			background: #0066cc;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 12px;
+			font-size: 16px;
+			cursor: pointer;
+			position: absolute;
+			left: 10px;
+			bottom: 10px;
+		}
 
 		#auth {
-   	 		position: relative;  
+			position: relative;
 		}
-				.welcome-banner {
+
+		.welcome-banner {
 			background: #d0e9ff;
 			border-top: 2px solid #3399ff;
 			border-bottom: 2px solid #3399ff;
-			padding: 20px;
+			padding: 30px 20px;
 			text-align: center;
 			font-family: sans-serif;
 			color: #003366;
-			margin: 0;
+			position: relative;
+			opacity: 0;
+			animation: fadeIn 1.5s ease-out 0.2s forwards;
 		}
-	
+
 		.welcome-banner h2 {
 			margin-top: 0;
-			font-size: 24px;
+			font-size: 26px;
 			color: #004080;
 		}
-	
+
 		.welcome-banner p {
 			margin-bottom: 0;
 			font-size: 16px;
 		}
-		.welcome-banner {
-	background: #d0e9ff;
-	border-top: 2px solid #3399ff;
-	border-bottom: 2px solid #3399ff;
-	padding: 30px 20px;
-	text-align: center;
-	font-family: sans-serif;
-	color: #003366;
-	position: relative;
-	animation: fadeIn 1.5s ease;
-}
 
-.welcome-banner h2 {
-	margin-top: 0;
-	font-size: 26px;
-	color: #004080;
-}
+		.banner-img {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			width: 60px;
+			height: auto;
+			opacity: 0.9;
+			border-radius: 8px;
+			box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+		}
 
-.welcome-banner p {
-	margin-bottom: 0;
-	font-size: 16px;
-}
-
-.banner-img {
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
-	width: 60px;
-	height: auto;
-	opacity: 0.9;
-	border-radius: 8px;
-	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Анимация появления */
-@keyframes fadeIn {
-	from { opacity: 0; transform: translateY(-20px); }
-	to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-	animation: fadeIn 1.2s ease-out;
-}
-
-/* Анимация для карты */
-.map-container {
-	animation: fadeIn 1.4s ease-out;
-}
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(-20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
 
 	</style>
 </head>
